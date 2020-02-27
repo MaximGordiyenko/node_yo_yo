@@ -23,7 +23,7 @@ pages_router.get('/:page_id', (req, res) => {
 });
 
 pages_router.post('/page', (res, req) => {
-    try {
+    // try {
         const id = uuidv4();
         const message = {
             id,
@@ -38,9 +38,9 @@ pages_router.post('/page', (res, req) => {
             let data = fs.readFileSync("./data.js", "utf8");
             console.log(data);  // выводим считанные данные
         });
-    }catch (e) {
-        console.log(e);
-    }
+    // }catch (e) {
+    //     console.log(e);
+    // }
 
 });
 
