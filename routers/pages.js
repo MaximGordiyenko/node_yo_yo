@@ -22,22 +22,14 @@ pages_router.get('/:page_id', (req, res) => {
     }
 });
 
-pages_router.post('/page', (res, req) => {
+pages_router.post('/page', (req, res) => {
     try {
-        const id = uuidv4();
-        const message = {
-            id,
-            text: req.body.text,
-        };
-        data[id] = message;
-        console.log(message);
-        fs.appendFile("./data.js", JSON.stringify(message), (error) => {
-            if (error) throw error; // если возникла ошибка
-            console.log("Асинхронная запись файла завершена. Содержимое файла:");
-            let data = fs.readFileSync("./data.js", "utf8");
-            console.log(data);  // выводим считанные данные
-        });
-    }catch (e) {
+        let name = req.body.name;
+        let pass = req.body.pass;
+        let text = req.body.text;
+        console.log("name:", name, "pass:", pass, "text:", text);
+        res.end("yes");
+    } catch (e) {
         console.log(e);
     }
 });

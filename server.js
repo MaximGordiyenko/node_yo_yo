@@ -5,10 +5,12 @@ const app = express();
 const pages = require('./routers/pages');
 const PORT = process.env.PORT;
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use('/pages', pages);
 
+app.get('/', (req,res) => {
+    res.sendfile("index.html");
+});
 app.listen(PORT, () => console.log('I spin your data on my port: 5000'));
