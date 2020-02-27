@@ -1,10 +1,13 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const users = require('./routers/pages');
+const app = express();
+const pages = require('./routers/pages');
+const PORT = process.env.PORT;
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
-app.use('/pages', users);
+app.use('/pages', pages);
 
-app.listen(4000, () => console.log('I spin your data on my port: 4000'));
+app.listen(PORT, () => console.log('I spin your data on my port: 5000'));
