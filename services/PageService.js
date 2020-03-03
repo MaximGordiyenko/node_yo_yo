@@ -1,7 +1,9 @@
-const data = require('../data');
+let data = require('../data');
 
 const createPage = (params) => {
-//TODO: а вот тут уже непосредственоо читаешь из базы / файла / переменной
+  let dataTemp = {...data};
+  data = {...dataTemp, params};
+  console.log(data)
 };
 const updatePage = (id, params) => {
 
@@ -9,12 +11,10 @@ const updatePage = (id, params) => {
 const deletePage = (id) => {
 
 };
-const readPage = (id) => {
+const readPage = (id) => data[id];
 
-};
-const readPages = () => {
+const readPages = () => Object.values(data);
 
-};
 
 module.exports.createPage = createPage;
 module.exports.updatePage = updatePage;
