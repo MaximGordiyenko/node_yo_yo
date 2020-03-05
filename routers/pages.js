@@ -28,7 +28,7 @@ pages_router.post('/page', (req, res) => {
         let pass = req.body.pass;
         let text = req.body.text;
         console.log("name:", name, "pass:", pass, "text:", text);
-        res.end("yes");
+        res.end();
     } catch (e) {
         console.log(e);
     }
