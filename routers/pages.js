@@ -1,11 +1,11 @@
 const express = require('express');
 const PageService = require('../services/PageService');
 const pages_router = express.Router();
-let data = require('../data');
-const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
-const url = require('url');
-const bodyParser = require('body-parser');
+// let data = require('../data');
+// const { v4: uuidv4 } = require('uuid');
+// const fs = require('fs');
+// const url = require('url');
+
 
 // method: GET, path: /pages
 pages_router.get('/', (req, res) => {
@@ -30,16 +30,20 @@ pages_router.get('/:page_id', (req, res) => {
   }
 });
 
-pages_router.post('/page', (res, req) => {
-  let newPage;
+pages_router.post('/page', (req, res) => {
+  // let newPage;
   try {
-    newPage = PageService.createPage()
+      let reqData = {name: req.body.name, pass: req.body.pass, text: req.body.text};
+      console.log({id: 10, reqData});
+      return res.send(PageService.createPage(reqData));
+      // res.end();
+    // newPage = PageService.createPage()
   } catch (error) {
     //TODO: реализовать корректную обработку ошибок
     console.log(error);
     res.error(400)
   }
-  return res.send(newPage)
+  // return res.send(newPage)
 });
 
 module.exports = pages_router;

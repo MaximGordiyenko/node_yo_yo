@@ -1,8 +1,7 @@
 let data = require('../data');
 
-const createPage = (params) => {
-  let dataTemp = {...data};
-  data = {...dataTemp, params};
+const createPage = (some) => {
+  data = {...data, ...some};
   console.log(data)
 };
 const updatePage = (id, params) => {
