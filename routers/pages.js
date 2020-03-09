@@ -10,33 +10,32 @@ let id = uuidv4();
 pages_router.get('/', (req, res) => {
     try {
         const pages = PageService.readPages();
-        res.json(pages)
+        return res.json(pages)
     } catch (error) {
         console.log('Error while reading pages', error);
-        res.json(error);
-        res.status(500);
+        return res.status(500).send(error);
     }
 });
 
-pages_router.get('/:page_id', (req, res) => {
-    const id = parseInt(req.params.page_id);
+pages_router.get('/:id', (req, res) => {
+    const id = parseInt(req.params.id);
     try {
-        res.send(PageService.readPage(id));
+        return res.send(PageService.readPage(id));
     } catch (error) {
-        res.status(500);
         console.log(`Error while reading page by ${id}`, error);
-        res.json(error)
+        return res.status(500).send(error);
     }
 });
 
 pages_router.post('/page', (req, res) => {
     try {
         let reqData = {[id]: {name: req.body.name, pass: req.body.pass, text: req.body.text}};
-        res.send(PageService.createPage(reqData));
+        console.log(reqData);
+        return res.send(PageService.createPage(reqData));
     } catch (error) {
         //TODO: реализовать корректную обработку ошибок
         console.log(error);
-        res.status(400).send();
+        return res.status(400).send(error);
     }
 });
 
