@@ -1,7 +1,9 @@
 let data = require('../data');
+const {v4: uuidv4} = require('uuid');
+let id = uuidv4();
 
 const createPage = (some) => {
-  data = {...data, ...some};
+  data = {...data, [id]:{...some}};
   console.log(data)
 };
 const updatePage = (id, params) => {

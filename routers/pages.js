@@ -1,10 +1,6 @@
 const express = require('express');
 const PageService = require('../services/PageService');
 const pages_router = express.Router();
-const {v4: uuidv4} = require('uuid');
-// const fs = require('fs');
-// const url = require('url');
-let id = uuidv4();
 
 // method: GET, path: /pages
 pages_router.get('/', (req, res) => {
@@ -29,11 +25,13 @@ pages_router.get('/:id', (req, res) => {
 
 pages_router.post('/page', (req, res) => {
     try {
-        let reqData = {[id]: {name: req.body.name, pass: req.body.pass, text: req.body.text}};
-        console.log(reqData);
+        let reqData = {
+            name: req.body.name,
+            pass: req.body.pass,
+            text: req.body.text
+        };
         return res.send(PageService.createPage(reqData));
     } catch (error) {
-        //TODO: реализовать корректную обработку ошибок
         console.log(error);
         return res.status(400).send(error);
     }
