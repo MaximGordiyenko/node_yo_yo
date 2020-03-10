@@ -1,10 +1,18 @@
+require('dotenv').config();
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const users = require('./routers/pages');
+const app = express();
+const pages = require('./routers/pages');
+const PORT = process.env.PORT;
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/pages', users);
+app.use('/pages', pages);
 
-app.listen(4000, () => console.log('I spin your data on my port: 4000'));
+app.use(express.static('public')); // relative path of client-side code
+app.get('/', (req, res) => {
+    res.sendFile("index.html", {root: __dirname});
+});
+
+app.listen(PORT, () => console.log('I spin your data on my port: 5000'));
