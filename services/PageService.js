@@ -1,16 +1,27 @@
 let data = require('../data');
-const {v4: uuidv4} = require('uuid');
-let id = uuidv4();
+const getHighestId = () => Math.max(...Object.keys(data));
 
 const createPage = (some) => {
+  const id = getHighestId() + 1;
   data = {...data, [id]:{...some}};
-  console.log(data)
+  return true
 };
 const updatePage = (id, params) => {
-
+  if(!data[id]) {
+    throw new Error(`there is no data by id ${id}`)
+  }
+  let {[id]: omit, ...res} = data;
+  data = {...res, [id]: {...params}};
+  return true
 };
-const deletePage = (id) => {
 
+const deletePage = (id) => {
+  if(!data[id]) {
+    throw new Error(`there is no data by id ${id}`)
+  }
+  let {[id]: omit, ...res} = data;
+  data = res;
+  return true
 };
 const readPage = (id) => data[id];
 
