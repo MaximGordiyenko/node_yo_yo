@@ -34,14 +34,12 @@ pages_router.delete('/:id', (req, res) => {
 
 pages_router.put('/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    const {name, pass, text} = req.body;
-
-    if(!name || !pass || !text || !id) {
+    const {title, author, description, lastUpdateDate} = req.body;
+    if (!title || !author || !description || !lastUpdateDate || !id) {
         return res.status(666).send('name pass text id required');
     }
-
     try {
-    return res.send(PageService.updatePage(id, {name, pass, text}))
+        return res.send(PageService.updatePage(id, {title, author, description, lastUpdateDate}))
     } catch (error) {
         console.log(error);
         return res.status(400).send(error.message);
@@ -49,12 +47,12 @@ pages_router.put('/:id', (req, res) => {
 });
 
 pages_router.post('/', (req, res) => {
-    const {name, pass, text} = req.body;
-    if(!name || !pass || !text) {
+    const {title, author, description, lastUpdateDate} = req.body;
+    if (!title || !author || !description || !lastUpdateDate) {
         return res.status(666).send('name pass text required');
     }
     try {
-        return res.send(PageService.createPage({name, pass, text}));
+        return res.send(PageService.createPage({title, author, description, lastUpdateDate}));
     } catch (error) {
         console.log(error);
         return res.status(400).send(error);

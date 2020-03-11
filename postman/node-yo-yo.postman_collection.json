@@ -20,7 +20,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\":\"ssj\",\n\t\"pass\":\"pass\",\n\t\"text\":\"hello\"\n}",
+					"raw": "{\n\t\"title\":\"Hello\",\n\t\"author\":\"Maximus\",\n\t\"description\":\"It’s dynamic, event-driven, uses an event-loop in a single-thread, which\",\n\t\"lastUpdateDate\":\"20-20-2010\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +111,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\":\"ssj\",\n\t\"pass\":\"pass\",\n\t\"text\":\"hello\"\n}",
+					"raw": "{\n\t\"title\":\"Hello\",\n\t\"author\":\"Maximus\",\n\t\"description\":\"It’s dynamic, event-driven, uses an event-loop in a single-thread, which\",\n\t\"lastUpdateDate\":\"20-20-2010\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
